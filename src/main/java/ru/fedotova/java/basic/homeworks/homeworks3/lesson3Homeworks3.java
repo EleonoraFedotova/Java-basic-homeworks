@@ -2,18 +2,18 @@ package ru.fedotova.java.basic.homeworks.homeworks3;
 
 public class lesson3Homeworks3 {
     public static void main(String[] args) {
-        int arr_sum[][] = {{1, -2, 8}, {3, -7, 0, 4}};
+        int[][] arr_sum = {{1, -2, 8}, {3, -7, 0, 4}};
         System.out.println("Решение задания 1: " + sumOfPositiveElements(arr_sum));
-        int size [][] = new int [4][4];
+        int[][] size  = new int [4][4];
         System.out.println("Решение задания 2: ");
         sumOfLengthSquare(size);
         System.out.println("Решение задания 3: ");
-        int arr[][] = new int[3][3];
+        int[][] arr = new int[3][3];
         zeroDiagonalArray(arr);
-        int array[][] = {{1, 4, 8}, {3, 9, 2, 45}};
+        int [][] array = {{1, 4, 8}, {3, 9, 2, 45}};
         System.out.println("Решение задания 4: " + findMax(array));
-        int array_sum[][] = {{1, -2, 8}, {5, 1, 1}, {3, 2, 4}};
-        System.out.println("Решение задания 5: " + sumTwoRow(array_sum));
+        int [][] arraySum = {{1, -2, 8}, {5, 1, 1}, {3, 2, 4}};
+        System.out.println("Решение задания 5: " + sumTwoRow(arraySum));
  }
 
     /* 1. Реализовать метод sumOfPositiveElements(..), принимающий в качестве аргумента целочисленный двумерный массив,
@@ -79,15 +79,15 @@ public class lesson3Homeworks3 {
         }
     /* 5. Реализуйте метод, который считает сумму элементов второй строки двумерного массива, если второй строки не существует,
     то в качестве результата необходимо вернуть -1 */
-        public static int sumTwoRow (int[][] array_sum){
+        public static int sumTwoRow (int[][] arraySum){
             int sum = 0;
-            for (int i = 1; i < array_sum.length; i++) {
-                for (int j = 0; j < array_sum[i].length; j++)
+            for (int i = 0; i < arraySum.length; i++) {
+                for (int j = 0; j < arraySum[i].length; j++)
                     if (i == 1) {
-                        sum += array_sum[i][j];
+                        sum += arraySum[i][j];
                     }
-                if (i == 0){
-                    sum = -1;
+               if(arraySum.length==1){
+                   sum = -1;
                 }
             }
             return sum;
