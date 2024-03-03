@@ -1,6 +1,6 @@
 package ru.fedotova.java.basic.homeworks.homeworks5;
 
-public class Animal {
+public abstract class Animal {
     String name;
     double speed;
     double swimSpeed;
@@ -23,30 +23,22 @@ public class Animal {
         }
     }
 
-    public double swim(int distance) {
-        if (this instanceof Cat) {
-            System.out.println(name + " не умеет плавать.");
-            return -1;
-        } else if (this instanceof Dog && stamina >= 2 * distance) {
-            stamina -= 2 * distance;
-            return distance / swimSpeed;
-        } else if (this instanceof Horse && stamina >= 4 * distance) {
-            stamina -= 4 * distance;
-            return distance / swimSpeed;
-        } else {
-            System.out.println(name + " устал(а) и не может проплыть такое расстояние.");
-            return -1;
-        }
-    }
 
     public void info() {
         System.out.println(name + ": выносливость = " + stamina);
     }
+
+    public abstract double swim(int distance);
 }
 
 class Cat extends Animal {
     public Cat(String name, double speed, int stamina) {
         super(name, speed, 0, stamina);
+    }
+    @Override
+    public double swim(int distance) {
+        System.out.println(name + " не умеет плавать.");
+        return -1;
     }
 }
 
@@ -54,11 +46,31 @@ class Dog extends Animal {
     public Dog(String name, double speed, double swimSpeed, int stamina) {
         super(name, speed, swimSpeed, stamina);
     }
+    @Override
+    public double swim(int distance) {
+        if (stamina >= 2 * distance) {
+            stamina -= 2 * distance;
+            return distance / swimSpeed;
+        } else {
+            System.out.println(name + " устал(а) и не может проплыть такое расстояние.");
+            return -1;
+        }
+    }
 }
 
 class Horse extends Animal {
     public Horse(String name, double speed, double swimSpeed, int stamina) {
         super(name, speed, swimSpeed, stamina);
+    }
+    @Override
+    public double swim(int distance) {
+        if (this instanceof Horse && stamina >= 4 * distance) {
+            stamina -= 2 * distance;
+            return distance / swimSpeed;
+        } else {
+            System.out.println(name + " устал(а) и не может проплыть такое расстояние.");
+            return -1;
+        }
     }
 }
 
