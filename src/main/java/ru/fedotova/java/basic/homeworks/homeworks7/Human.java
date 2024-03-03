@@ -73,14 +73,14 @@ class Car extends Transport {
     private int fuel;
 
     public Car(int fuel) {
-        super("Автомобиль");
+        super("Машина");
         this.fuel = fuel;
     }
 
     @Override
     public boolean move(int distance, TerrainType terrainType) {
         if (terrainType == TerrainType.DENSE_FOREST || terrainType == TerrainType.SWAMP) {
-            System.out.println("Автомобиль не может переместиться по данной местности");
+            System.out.println("Машина не может переместиться по данной местности");
             return false;
         }
 
