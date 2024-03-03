@@ -64,8 +64,8 @@ class Horse extends Animal {
     }
     @Override
     public double swim(int distance) {
-        if (this instanceof Horse && stamina >= 4 * distance) {
-            stamina -= 2 * distance;
+        if (stamina >= 4 * distance) {
+            stamina -= 4 * distance;
             return distance / swimSpeed;
         } else {
             System.out.println(name + " устал(а) и не может проплыть такое расстояние.");
